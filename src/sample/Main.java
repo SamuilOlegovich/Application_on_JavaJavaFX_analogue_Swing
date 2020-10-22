@@ -13,6 +13,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        // название программы сверху
         primaryStage.setTitle("Application_on_JavaJavaFX_analogue_Swing");
         primaryStage.setScene(new Scene(root, 700 , 400));
         primaryStage.show();
@@ -20,6 +21,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+
         launch(args);
     }
 }
