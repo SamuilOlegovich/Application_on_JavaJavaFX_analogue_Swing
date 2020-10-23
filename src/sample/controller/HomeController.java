@@ -1,4 +1,4 @@
-package sample;
+package sample.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
@@ -20,7 +20,6 @@ public class HomeController {
 
     @FXML
     void initialize() {
-        assert imageButtonUser != null : "fx:id=\"imageButtonUser\" was not injected: check your FXML file 'app.fxml'.";
 
     }
 }
