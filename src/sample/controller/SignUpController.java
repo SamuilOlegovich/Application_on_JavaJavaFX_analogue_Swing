@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 
 
 
-public class signUpController {
+public class SignUpController {
 
     @FXML
     private ResourceBundle resources;
