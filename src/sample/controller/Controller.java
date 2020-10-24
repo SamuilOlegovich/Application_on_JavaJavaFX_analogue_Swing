@@ -39,11 +39,25 @@ public class Controller {
     void initialize() {
 
         enterButton.setOnAction(event -> {
+            String loginText = loginField.getText().trim();
+            String passwordText = passwordField.getText().trim();
+
+            if (!loginText.equals("") && !passwordText.equals("")) {
+                loginUser(loginText, passwordText);
+            } else {
+                System.out.println("ERROR - login and password");
+            }
+        });
+
+
+
+
+        registerNowButton.setOnAction(event -> {
             // при нажатии на кнопку мы прячем окно
             // мы берем сцену на которой она находится
             // потом берем окно на которой она находится
             // и дальше уже это окно уже прячем
-            enterButton.getScene().getWindow().hide();
+            registerNowButton.getScene().getWindow().hide();
             // далее нам нужно отобразить следующее нужное нам окно
             FXMLLoader fxmlLoader = new FXMLLoader();
             // устанавливаем локацию файла который нам надо загрузить
@@ -62,5 +76,9 @@ public class Controller {
 
             System.out.println("Вы нажали на кнопку войти");
         });
+    }
+
+    private void loginUser(String loginText, String passwordText) {
+
     }
 }
