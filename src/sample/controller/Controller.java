@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.DatabaseHandler;
 import sample.User;
+import sample.animations.Shake;
 
 import java.io.IOException;
 import java.net.URL;
@@ -82,6 +83,8 @@ public class Controller {
         });
     }
 
+
+
     private void loginUser(String loginText, String passwordText) {
         DatabaseHandler databaseHandler = new DatabaseHandler();
         User user = new User();
@@ -91,17 +94,17 @@ public class Controller {
 
         int counter = 0;
 
-        while (true) {
-            try {
-                if (!resultSet.next()) break;
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-            counter++;
-        }
+        try {
+            while (resultSet.next()) counter++;
+        } catch (SQLException e) { e.printStackTrace(); }
 
         if (counter >= 1) {
             System.out.println("count " + counter);
+        } else {
+            Shake shakeLogin = new Shake(loginField);
+            Shake shakePassword = new Shake(passwordField);
+            shakeLogin.playAnim();
+            shakePassword.playAnim();
         }
     }
 }
