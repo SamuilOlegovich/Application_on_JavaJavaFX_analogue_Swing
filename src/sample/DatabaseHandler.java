@@ -1,10 +1,6 @@
 package sample;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
+import java.sql.*;
 
 
 // класс записывает и выводит данные из базы данных
@@ -21,6 +17,39 @@ public class DatabaseHandler extends Configs {
 
         return dbConnection;
     }
+
+
+    // записывает нового пользователя в базу данных при регистрации
+    public void signUpUser(User user) {
+        // SQL запрос в базу данныъ при помощи которого мы будем помещать данные в базу данных
+        String insert = "INSERT INTO " + Const.USER_TABLE
+                + "("
+                + Const.USERS_NAME + ","
+                + Const.USERS_LAST_NAME + ","
+                + Const.USERS_LOGIN + ","
+                + Const.USERS_PASSWORD + ","
+                + Const.USERS_LOCATION + ","
+                + Const.USERS_GENDER
+                + ")"
+                + "VALUES(?,?,?,?,?,?)";
+
+        try {
+            // класс который и будет работать с запросом и вставлять данные в быазу
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getLastName());
+            preparedStatement.setString(3, user.getLogin());
+            preparedStatement.setString(4, user.getPassword());
+            preparedStatement.setString(5, user.getLocation());
+            preparedStatement.setString(6, user.getGender());
+
+            // метод кладет в базу данные
+            preparedStatement.executeUpdate();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     // записывает нового пользователя в базу данных при регистрации
     public void signUpUser(String name, String lastName,
@@ -51,5 +80,30 @@ public class DatabaseHandler extends Configs {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+
+
+    // возвращает пользователя из базы данных
+    public ResultSet getUser(User user) {
+        ResultSet resultSet = null;
+
+        // SQL запрос в базу данныъ при помощи которого мы будем получать данные из базы данных
+        // выдать все (*) из базы согласно логину и паролю
+        String select = "SELECT * FROM " + Const.USER_TABLE + " WHERE "
+                + Const.USERS_LOGIN + "=? AND" + Const.USERS_PASSWORD + "=?";
+
+        try {
+            // класс который и будет работать с запросом и вставлять данные в быазу
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
+            preparedStatement.setString(1, user.getLogin());
+            preparedStatement.setString(2, user.getPassword());
+
+            // метод берет в базе данные
+            resultSet = preparedStatement.executeQuery();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
     }
 }

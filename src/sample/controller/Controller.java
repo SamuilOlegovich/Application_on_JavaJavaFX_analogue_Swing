@@ -8,9 +8,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.DatabaseHandler;
+import sample.User;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 
@@ -79,6 +83,25 @@ public class Controller {
     }
 
     private void loginUser(String loginText, String passwordText) {
+        DatabaseHandler databaseHandler = new DatabaseHandler();
+        User user = new User();
+        user.setLogin(loginText);
+        user.setPassword(passwordText);
+        ResultSet resultSet = databaseHandler.getUser(user);
 
+        int counter = 0;
+
+        while (true) {
+            try {
+                if (!resultSet.next()) break;
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            counter++;
+        }
+
+        if (counter >= 1) {
+            System.out.println("count " + counter);
+        }
     }
 }
