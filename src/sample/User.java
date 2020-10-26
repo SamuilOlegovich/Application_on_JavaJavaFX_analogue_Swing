@@ -1,24 +1,26 @@
 package sample;
 
 public class User {
-    private String name;
     private String lastName;
-    private String login;
     private String password;
     private String location;
     private String gender;
+    private String login;
+    private String name;
 
-    public User() {
-    }
+
+    public User() { }
 
     public User(String name, String lastName, String login, String password, String location, String gender) {
-        this.name = name;
         this.lastName = lastName;
-        this.login = login;
         this.password = password;
         this.location = location;
         this.gender = gender;
+        this.login = login;
+        this.name = name;
     }
+
+
 
     public String getName() {
         return name;

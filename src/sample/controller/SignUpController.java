@@ -65,11 +65,6 @@ public class SignUpController {
         User user = new User(name, lastName, login, password, location, gender);
         DatabaseHandler databaseHandler = new DatabaseHandler();
         databaseHandler.signUpUser(user);
-
-//        databaseHandler.signUpUser(nameField.getText(), lastNameField.getText(),
-//                loginField.getText(), passwordField.getText(), locationField.getText(),
-//                maleCheckBox.isSelected() ? maleCheckBox.toString() : femaleCheckBox.toString()
-//        );
     }
 }
 

@@ -101,9 +101,7 @@ public class DatabaseHandler extends Configs {
 
             // метод берет в базе данные
             resultSet = preparedStatement.executeQuery();
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException | ClassNotFoundException e) { e.printStackTrace(); }
         return resultSet;
     }
 }

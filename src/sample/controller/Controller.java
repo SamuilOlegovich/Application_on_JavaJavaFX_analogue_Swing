@@ -42,69 +42,64 @@ public class Controller {
 
     @FXML
     void initialize() {
-
         enterButton.setOnAction(event -> {
-            String loginText = loginField.getText().trim();
             String passwordText = passwordField.getText().trim();
+            String loginText = loginField.getText().trim();
 
-            if (!loginText.equals("") && !passwordText.equals("")) {
-                loginUser(loginText, passwordText);
-            } else {
-                System.out.println("ERROR - login and password");
-            }
+            if (!loginText.equals("") && !passwordText.equals("")) loginUser(loginText, passwordText);
+            else System.out.println("ERROR - login and password");
         });
 
-
-
-
         registerNowButton.setOnAction(event -> {
-            // при нажатии на кнопку мы прячем окно
-            // мы берем сцену на которой она находится
-            // потом берем окно на которой она находится
-            // и дальше уже это окно уже прячем
-            registerNowButton.getScene().getWindow().hide();
-            // далее нам нужно отобразить следующее нужное нам окно
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            // устанавливаем локацию файла который нам надо загрузить
-            fxmlLoader.setLocation(getClass().getResource("/sample/view/signUp.fxml"));
-            // а теперь запускаем его отображение
-            try {
-                fxmlLoader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent parent = fxmlLoader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(parent));
-            stage.showAndWait();
-
-            System.out.println("Вы нажали на кнопку войти");
+            openNewScene("/sample/view/signUp.fxml");
         });
     }
 
 
 
     private void loginUser(String loginText, String passwordText) {
-        DatabaseHandler databaseHandler = new DatabaseHandler();
+        int counter = 0;
         User user = new User();
         user.setLogin(loginText);
         user.setPassword(passwordText);
+        DatabaseHandler databaseHandler = new DatabaseHandler();
         ResultSet resultSet = databaseHandler.getUser(user);
-
-        int counter = 0;
 
         try {
             while (resultSet.next()) counter++;
         } catch (SQLException e) { e.printStackTrace(); }
 
-        if (counter >= 1) {
-            System.out.println("count " + counter);
-        } else {
+        if (counter >= 1) openNewScene("/sample/view/app.fxml");
+        else {
             Shake shakeLogin = new Shake(loginField);
             Shake shakePassword = new Shake(passwordField);
             shakeLogin.playAnim();
             shakePassword.playAnim();
         }
+    }
+
+
+
+    private void openNewScene(String window) {
+        // при нажатии на кнопку мы прячем окно
+        // мы берем сцену на которой она находится
+        // потом берем окно на которой она находится
+        // и дальше уже это окно уже прячем
+        registerNowButton.getScene().getWindow().hide();
+        // далее нам нужно отобразить следующее нужное нам окно
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        // устанавливаем локацию файла который нам надо загрузить
+        fxmlLoader.setLocation(getClass().getResource(window));
+        // а теперь запускаем его отображение
+        try {
+            fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Parent parent = fxmlLoader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(parent));
+        stage.showAndWait();
     }
 }

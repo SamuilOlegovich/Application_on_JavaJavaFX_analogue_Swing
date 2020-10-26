@@ -4,6 +4,8 @@ import javafx.animation.TranslateTransition;
 import javafx.scene.Node;
 import javafx.util.Duration;
 
+
+
 // создаем анимации - пр неправильном вводе будем трясти окном
 public class Shake {
     private TranslateTransition translateTransition;
