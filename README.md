@@ -1,1 +1,1 @@
-JavaFX_JDBC_MySQL
+JavaFX_SceneBuilder_JDBC_MySQL
