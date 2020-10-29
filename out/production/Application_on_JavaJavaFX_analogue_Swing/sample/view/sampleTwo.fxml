@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.ControllerTwo">
+   <children>
+      <AnchorPane layoutY="110.0" prefHeight="290.0" prefWidth="700.0" style="-fx-background-color: #fafafa;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="110.0">
+         <children>
+            <PasswordField fx:id="passwordField" layoutX="216.0" layoutY="123.0" prefHeight="38.0" prefWidth="270.0" promptText="Password" style="-fx-border-color: gray; -fx-border-radius: 10; -fx-background-radius: 10;" AnchorPane.leftAnchor="216.0" AnchorPane.rightAnchor="214.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </PasswordField>
+            <TextField fx:id="loginField" layoutX="216.0" layoutY="66.0" prefHeight="38.0" prefWidth="270.0" promptText="Login" style="-fx-border-color: gray; -fx-border-radius: 10; -fx-background-radius: 10;" AnchorPane.leftAnchor="216.0" AnchorPane.rightAnchor="214.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="241.0" prefHeight="47.0" prefWidth="221.0" text="Authorization" textFill="#a49f97" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="119.0">
+               <font>
+                  <Font name="Caveat Bold" size="44.0" />
+               </font>
+            </Label>
+            <Button fx:id="enterButton" layoutX="276.0" layoutY="182.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="148.0" style="-fx-background-color: #2E3348 #2E3348; -fx-background-radius: 10;" text="Enter" textFill="#fcfbfa" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="276.0" AnchorPane.rightAnchor="276.0">
+               <font>
+                  <Font name="Caveat" size="34.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label layoutX="120.0" layoutY="20.0" prefHeight="68.0" prefWidth="461.0" text="POWER by SamuilOlegovich" textFill="#fffefe" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="119.0">
+         <font>
+            <Font name="Caveat Bold" size="48.0" />
+         </font>
+      </Label>
+      <Button fx:id="registerNowButton" layoutX="621.0" layoutY="8.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #f39c36; -fx-background-radius: 10;" text="Exit" textFill="#fcf9f9" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="8.0">
+         <font>
+            <Font name="Caveat" size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
