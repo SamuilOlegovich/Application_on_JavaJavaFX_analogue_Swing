@@ -37,13 +37,13 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="locationField" layoutX="215.0" layoutY="161.0" prefHeight="38.0" prefWidth="270.0" promptText="Location" style="-fx-border-color: gray; -fx-border-radius: 10; -fx-background-radius: 10;">
+            <CheckBox fx:id="maleCheckBox" layoutX="258.0" layoutY="125.0" mnemonicParsing="false" selected="true" text="Male" />
+            <CheckBox fx:id="femaleCheckBox" layoutX="377.0" layoutY="125.0" mnemonicParsing="false" text="Female" />
+            <TextField fx:id="locationField" layoutX="203.0" layoutY="160.0" prefHeight="38.0" prefWidth="270.0" promptText="Location" style="-fx-border-color: gray; -fx-border-radius: 10; -fx-background-radius: 10;">
                <font>
                   <Font size="18.0" />
                </font>
-            </PasswordField>
-            <CheckBox fx:id="maleCheckBox" layoutX="258.0" layoutY="125.0" mnemonicParsing="false" selected="true" text="Male" />
-            <CheckBox fx:id="femaleCheckBox" layoutX="377.0" layoutY="125.0" mnemonicParsing="false" text="Female" />
+            </TextField>
             </children>
         </AnchorPane>
         <Label layoutX="120.0" layoutY="20.0" prefHeight="68.0" prefWidth="461.0" text="POWER by SamuilOlegovich" textFill="#fffefe">

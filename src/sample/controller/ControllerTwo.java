@@ -5,21 +5,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.DatabaseHandler;
 import sample.User;
+import sample.animations.Shake;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 
-
-
-public class SignUpController {
+public class ControllerTwo {
 
     @FXML
     private ResourceBundle resources;
@@ -37,42 +37,46 @@ public class SignUpController {
     private Button enterButton;
 
     @FXML
-    private TextField nameField;
-
-    @FXML
-    private TextField lastNameField;
-
-    @FXML
-    private CheckBox maleCheckBox;
-
-    @FXML
-    private CheckBox femaleCheckBox;
-
-    @FXML
-    private TextField locationField;
-
+    private Button registerNowButton;
 
     @FXML
     void initialize() {
         enterButton.setOnAction(event -> {
-            signUpNewUser();
-            openNewScene("/sample/view/sampleTwo.fxml");
+            String passwordText = passwordField.getText().trim();
+            String loginText = loginField.getText().trim();
+
+            if (!loginText.equals("") && !passwordText.equals("")) loginUser(loginText, passwordText);
+            else System.out.println("ERROR - login and password");
+        });
+
+        registerNowButton.setOnAction(event -> {
+            openNewScene("/sample/view/sample.fxml");
         });
     }
 
 
-    private void signUpNewUser() {
-        String gender = maleCheckBox.isSelected() ? "Male" : "Female";
-        String lastName = lastNameField.getText();
-        String password = passwordField.getText();
-        String location = locationField.getText();
-        String login = loginField.getText();
-        String name = nameField.getText();
 
-        User user = new User(name, lastName, login, password, location, gender);
+    private void loginUser(String loginText, String passwordText) {
+        int counter = 0;
+        User user = new User();
+        user.setLogin(loginText);
+        user.setPassword(passwordText);
         DatabaseHandler databaseHandler = new DatabaseHandler();
-        databaseHandler.signUpUser(user);
+        ResultSet resultSet = databaseHandler.getUser(user);
+
+        try {
+            while (resultSet.next()) counter++;
+        } catch (SQLException e) { e.printStackTrace(); }
+
+        if (counter >= 1) openNewScene("/sample/view/app.fxml");
+        else {
+            Shake shakeLogin = new Shake(loginField);
+            Shake shakePassword = new Shake(passwordField);
+            shakeLogin.playAnim();
+            shakePassword.playAnim();
+        }
     }
+
 
 
     private void openNewScene(String window) {
@@ -80,7 +84,7 @@ public class SignUpController {
         // мы берем сцену на которой она находится
         // потом берем окно на которой она находится
         // и дальше уже это окно уже прячем
-        enterButton.getScene().getWindow().hide();
+        registerNowButton.getScene().getWindow().hide();
         // далее нам нужно отобразить следующее нужное нам окно
         FXMLLoader fxmlLoader = new FXMLLoader();
         // устанавливаем локацию файла который нам надо загрузить
@@ -98,4 +102,3 @@ public class SignUpController {
         stage.showAndWait();
     }
 }
-
