@@ -15,8 +15,6 @@ public class Shake {
         translateTransition = new TranslateTransition(Duration.millis(70), node);   // время тряски объекта
         translateTransition.setFromX(0f);           // отступ от икса
         translateTransition.setByX(10f);            // на сколько передвинется относительно нынешней позиции по иксу
-        translateTransition.setByY(0f);
-        translateTransition.setByY(23f);
         translateTransition.setCycleCount(3);       // как много раз он повторит тряску
         translateTransition.setAutoReverse(true);   // что бы не влияло перетаскивание окна
     }

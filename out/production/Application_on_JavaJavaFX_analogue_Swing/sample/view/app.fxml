@@ -16,7 +16,7 @@
                         <Font name="Caveat Bold" size="44.0" />
                     </font>
                 </Label>
-            <ImageView fx:id="imageButtonUser" fitHeight="175.0" fitWidth="308.0" layoutX="241.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageButtonUser" fitHeight="175.0" fitWidth="308.0" layoutX="241.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="241.0" AnchorPane.rightAnchor="284.0">
                <image>
                   <Image url="@../assets/1.png" />
                </image>
