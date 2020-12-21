@@ -21,7 +21,7 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Label layoutX="241.0" prefHeight="47.0" prefWidth="221.0" text="Authorization" textFill="#a49f97" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="119.0">
+            <Label layoutX="241.0" layoutY="-2.0" prefHeight="62.0" prefWidth="220.0" text="Authorization" textFill="#a49f97" AnchorPane.leftAnchor="241.0" AnchorPane.rightAnchor="239.0">
                <font>
                   <Font name="Caveat Bold" size="44.0" />
                </font>
